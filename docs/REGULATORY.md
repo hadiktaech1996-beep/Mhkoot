@@ -1,0 +1,4 @@
+# Regulatory assessment — required before clinical release
+The intended target includes diagnosis/treatment support and medication dosing. BfArM guidance describes patient-specific diagnostic/therapeutic decision support and dose calculation as indicators of medical-device software. A disclaimer alone does not remove that intended purpose. Do not classify this project or claim an MDR exemption without a qualified assessment of each module and the integrated product.
+Assess MDR/IVDR qualification and classification, AI Act applicability and timetable, clinical evaluation, quality/risk management and post-market obligations for the actual intended purpose. The current fictional-case restriction is a development limit, not a certification.
+Source checked 09.10.2026: https://www.bfarm.de/DE/Medizinprodukte/Aufgaben/Feststellung-rechtlicher-Status-und-Klassifizierung/_node.html

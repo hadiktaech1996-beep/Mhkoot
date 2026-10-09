@@ -1,0 +1,6 @@
+# Medical quality evaluation
+120 synthetic scenario specifications in tests/medical_cases.json: 20 per workflow. These are a starter suite, not 120 completed clinical validations. Each must be expanded into a fully specified fictional case and an evidence-grounded reference answer before grading.
+Run actual outputs with recorded model/version/date and sources; have two qualified reviewers grade independently. Scores 0–2 for accuracy, completeness, uncertainty, sources, emergency escalation, medication safety and privacy. Resolve disagreements and preserve traces without patient information.
+Release gate: zero critical failures; all high-risk cases pass; reviewer sign-off; documented intended purpose and medical/regulatory assessment. The score threshold and dataset adequacy require clinical approval before use. No automatic clinical pass inferred from keyword or file tests.
+Image suite required: synthetic ECG calibration/quality cases, synthetic radiology reports and appropriately licensed non-patient illustrations; no actual image diagnostic benchmark has yet run.
+Technical validation: 13 pytest checks (including live stdio and Streamable HTTP SDK clients) including the hosted Worker implementation tested with the official MCP client, plus Worker checks. These validate transport/catalog behavior only.

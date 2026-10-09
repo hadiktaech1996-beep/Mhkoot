@@ -1,0 +1,5 @@
+# Security architecture
+Catalog tools are read-only. No arbitrary file paths, URLs, shell commands, patient text fields or image uploads. Python uses an enum and allowlist. Hosted Worker rejects extra tool arguments, oversized requests (>4096 bytes) and malformed JSON. No application payload logging.
+Sites owns HTTPS and OAuth at its boundary. Worker requires trusted oai-authenticated-user-id for MCP requests. This header is trustworthy only behind the Sites authenticated boundary, never on a separately exposed origin. Owner-only site access must remain enforced by Sites.
+Python HTTP listens on loopback, for testing only. It is NOT an authenticated production endpoint. Do not expose it directly. If deploying Python independently, implement validated OAuth 2.1 resource-server checks, TLS, rate limiting and operational controls first.
+Provider rate limits, incident response, backup procedures, log policies and penetration testing remain unverified. No claim of an independent security audit.
