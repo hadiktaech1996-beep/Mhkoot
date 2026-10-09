@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "medoberarzt": {
+      "type": "streamable-http",
+      "url": "https://medoberarzt-pro-hadi.bubblyeagle2.chatgpt.site/mcp"
+    }
+  }
+}

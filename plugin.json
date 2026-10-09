@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "medoberarzt-pro",
+  "version": "0.2.0",
+  "description": "Six physician workflows for German medical documentation, education and evidence review. Fictional cases only in this prototype.",
+  "author": {
+    "name": "Mohamad Hadi Ktaech"
+  },
+  "license": "UNLICENSED",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "MedOberarzt Pro",
+        "shortDescription": "Ärztliche Dokumentation und medizinische Weiterbildung",
+        "longDescription": "Six workflows with source verification and physician review. No autonomous prescribing. Prototype; not medically validated.",
+        "developerName": "Mohamad Hadi Ktaech",
+        "capabilities": [
+          "Read"
+        ],
+        "defaultPrompt": [
+          "Erstelle eine Epikrise aus einem fiktiven Fall.",
+          "Prüfe die fehlenden Angaben für eine Arzneimitteldosis."
+        ]
+      }
+    }
+  }
+}
