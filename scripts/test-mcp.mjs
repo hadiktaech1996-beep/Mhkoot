@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import worker,{handleMcp} from '../worker/index.js';
+const req=(message)=>new Request('https://example.test/mcp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(message)});
+const rpc=async(method,params={})=>(await handleMcp(req({jsonrpc:'2.0',id:1,method,params}))).json();
+assert.equal((await rpc('initialize',{protocolVersion:'2025-03-26'})).result.serverInfo.name,'MedOberarzt Pro');
+assert.equal((await rpc('tools/list')).result.tools.length,3);
+for(const skill of ['medbrief','clinical','cardiology','neurorad','academy','pharmacology'])assert.equal((await rpc('tools/call',{name:'get_skill_instructions',arguments:{skill}})).result.isError,false);
+assert.equal((await rpc('tools/call',{name:'get_skill_instructions',arguments:{skill:'../../etc/passwd'}})).error.code,-32602);
+assert.equal((await rpc('tools/call',{name:'list_medical_skills',arguments:{patient:'fictional'}})).error.code,-32602);
+assert.equal((await rpc('unknown')).error.code,-32601);
+assert.equal((await worker.fetch(req({jsonrpc:'2.0',id:1,method:'tools/list'}))).status,401);
+assert.equal((await handleMcp(new Request('https://example.test/mcp'))).status,405);
+assert.equal((await handleMcp(req({payload:'x'.repeat(5000)}))).status,413);
+assert.equal((await handleMcp(new Request('https://example.test/mcp',{method:'POST',headers:{'Content-Type':'application/json'},body:'{'}))).status,400);
+console.log('Worker MCP checks PASS: initialization, discovery, 6 workflows, invalid inputs, auth denial, body limit, malformed JSON');
