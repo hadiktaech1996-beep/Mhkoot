@@ -7,3 +7,5 @@ Public release: explicitly approved audience change, completed clinical/privacy/
 
 Verified private endpoint: https://medoberarzt-pro-hadi.bubblyeagle2.chatgpt.site/mcp
 The portable package points to this owner-only endpoint for development; it is not ready for public distribution.
+
+Build note: .openai/hosting.json is provided by the Sites project; if absent, scripts/build.sh writes an empty placeholder so the artifact can still be built and validated locally.
