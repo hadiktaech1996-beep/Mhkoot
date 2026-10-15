@@ -15,3 +15,6 @@ python server/app.py starts stdio. MCP_TRANSPORT=streamable-http starts a loopba
 The server returns workflow instructions and source portals; it does not analyze patient cases or images, retrieve current medical guidance or invoke a model. Text/image/examination analysis is a future development target. The 120 synthetic scenario specifications are NOT_RUN, not completed medical validations.
 
 See docs/PRODUCT.md, docs/DEPLOYMENT.md, docs/EVALUATION.md and docs/PRIVACY.md. No real patient data, public publication or paid model API is enabled.
+
+## Digitalprodukt
+Das Verzeichnis product/ enthält ein verkaufsfähiges medizinisches Digitalprodukt (Dienstübergabe & Arztbrief Toolkit) mit Recherche, Inhalt, SBAR-Tool und Verkaufsplan. Siehe product/README.md. Es verändert den MCP-Server nicht.
