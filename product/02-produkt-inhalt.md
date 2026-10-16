@@ -20,6 +20,7 @@ Dieses Produkt liefert Organisationsvorlagen. Es ersetzt keine ärztliche Beurte
 
 ## Station 1 — SBAR-Übergabe in 90 Sekunden
 **Schritte**
+
 1. Zimmer/Bett und Alias nennen (kein Name in schriftlichen Notizen).
 2. S, B, A, R nacheinander, je ein bis zwei Sätze.
 3. Offene Aufgaben mit Frist nennen.

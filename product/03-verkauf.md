@@ -16,9 +16,11 @@ Empfehlung: Start auf Payhip (niedrigere Gebühr), später zusätzlich Gumroad f
 **Preis:** 15 $ Einführungspreis, später 19 $.
 **Rückgabe:** Bedingungen der Plattform angeben, Hinweis zum Widerruf bei digitalen Inhalten ergänzen.
 
-## Produktdatei bauen
-1. `02-produkt-inhalt.md` in Canva oder Notion als PDF gestalten.
-2. `sbar-tool.html` mit in das Download-Paket (ZIP).
+## Produktdatei (fertig)
+`product/release/Toolkit-Paket.zip` enthält das Käufer-PDF (3 Seiten) und `sbar-tool.html`. Diese ZIP-Datei bei Payhip/Gumroad als Download hochladen. Optional: den Inhalt in Canva gestalten.
+
+## Weitere Schritte
+2. (erledigt) SBAR-Tool liegt im Paket.
 3. Titelbild und 3 Vorschaubilder erstellen (nur fiktive Inhalte).
 
 ## Reels/TikTok-Skripte (je 30–40 Sekunden)

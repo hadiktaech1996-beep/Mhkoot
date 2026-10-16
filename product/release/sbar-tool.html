@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SBAR Übergabe</title>
+<style>
+:root{--bg:#f7f8fa;--fg:#1b2430;--card:#fff;--line:#d5dbe3;--acc:#0b6bcb}
+@media (prefers-color-scheme:dark){:root{--bg:#10151c;--fg:#e6ebf2;--card:#18202b;--line:#2b3644;--acc:#5aa9ff}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px}
+.warn{border:1px solid var(--line);background:var(--card);padding:10px 12px;border-radius:8px;font-size:14px}
+label{display:block;margin-top:14px;font-weight:600}
+small{font-weight:400;opacity:.75}
+textarea,input{width:100%;box-sizing:border-box;margin-top:4px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}
+button{margin:14px 8px 0 0;padding:10px 16px;border:0;border-radius:8px;background:var(--acc);color:#fff;font:inherit;cursor:pointer}
+button.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+pre{white-space:pre-wrap;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;min-height:60px}
+</style>
+</head>
+<body>
+<main>
+<h1>SBAR Übergabe</h1>
+<p class="warn">Keine Patientennamen oder identifizierbaren Daten eintragen. Nur Alias/Bettnummer. Das Tool speichert nichts. Organisationshilfe, keine ärztliche Beurteilung.</p>
+<label>Bett / Alias <input id="id" autocomplete="off"></label>
+<label>S – Situation <small>Warum jetzt?</small><textarea id="s" rows="2"></textarea></label>
+<label>B – Background <small>Vorgeschichte, Verlauf</small><textarea id="b" rows="3"></textarea></label>
+<label>A – Assessment <small>Einschätzung und Unsicherheit</small><textarea id="a" rows="3"></textarea></label>
+<label>R – Recommendation <small>Aufgabe und Frist</small><textarea id="r" rows="2"></textarea></label>
+<button id="gen">Übergabe erzeugen</button><button class="alt" id="copy">Kopieren</button><button class="alt" id="clr">Leeren</button>
+<h2>Ergebnis</h2>
+<pre id="out" aria-live="polite"></pre>
+</main>
+<script>
+const $=i=>document.getElementById(i);
+function build(){
+  const rows=[['Bett/Alias','id'],['S','s'],['B','b'],['A','a'],['R','r']];
+  const missing=rows.filter(([,k])=>!$(k).value.trim()).map(r=>r[0]);
+  let t=rows.filter(([,k])=>$(k).value.trim()).map(([l,k])=>l+': '+$(k).value.trim()).join('\n');
+  if(missing.length)t+='\n\nFehlt noch: '+missing.join(', ');
+  $('out').textContent=t;
+}
+$('gen').onclick=build;
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('out').textContent)}catch(e){}};
+$('clr').onclick=()=>{['id','s','b','a','r'].forEach(k=>$(k).value='');$('out').textContent=''};
+</script>
+</body>
+</html>
